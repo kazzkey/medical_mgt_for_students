@@ -13,6 +13,16 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="task_status">
+    <%= f.label :type, "type" %>
+    <%= f.select :type, {教師:"教師",医師:"医師"}, include_blank: "選択して下さい" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :school_id, "school_id"%><br />
+    <%= f.text_field :school_id, autofocus: true %>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
