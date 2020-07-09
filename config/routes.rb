@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :user_officers
   devise_for :user_students
   if Rails.env.development?
