@@ -2,7 +2,6 @@ ja:
   activerecord:
     attributes:
       user_student:
-      admin:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -151,4 +150,5 @@ ja:
       invalid: "は有効でありません。"
       confirmation: "が内容とあっていません。"
   user_students: *devise
+  user_officers: *devise
   admins: *devise
