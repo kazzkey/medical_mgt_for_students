@@ -1,0 +1,43 @@
+<!-- <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <%= link_to  homes_path, method: :get do %>
+              <i class="fas fa-seedling fa-3x"></i>
+            <% end %>
+            <% if user_student_signed_in? %>
+              <li class="nav-item active">
+                ~<%= current_user_student.name %>がログインしてます~
+              </li>
+              <li class="nav-item active">
+                <%= link_to "ログアウト", destroy_user_student_session_path, method: :delete , class: 'nav-link'%>
+              </li>
+            <% elsif user_officer_signed_in? %>
+              <li class="nav-item active">
+                ~<%= current_user_officer.name %>がログインしてます~
+              </li>
+              <li class="nav-item active">
+                <%= link_to "ログアウト", destroy_user_officer_session_path ,:method => :delete , class: 'nav-link'%>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li class="nav-item active">
+                ~<%= current_admin.name %>がログインしてます~
+              </li>
+              <li class="nav-item active">
+                <%= link_to "ログアウト", destroy_admin_session_path ,:method => :delete , class: 'nav-link'%>
+              </li>
+            <% else %>
+              <li class="nav-item active">
+                <%= link_to "ユーザー新規登録", new_user_student_registration_path , class: 'nav-link'%>
+              </li>
+              <li class="nav-item active">
+                <%= link_to "ログイン", new_user_student_session_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header> -->
+
+<h1>Homes#index</h1>
+<p>Find me in app/views/homes/index.html.erb</p>
