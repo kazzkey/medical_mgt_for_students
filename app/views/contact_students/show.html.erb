@@ -12,6 +12,9 @@
 
   <div class="card-body p-4">
     <div style="min-height:200px;">
+      <% if @contact_student.image.attached? %>
+        <%= image_tag @contact_student.image.variant(resize: "700x700").processed, style: "width:100%;" %>
+      <% end %>
       <%= simple_format @contact_student.content %>
     </div>
 
