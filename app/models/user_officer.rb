@@ -4,5 +4,8 @@ class UserOfficer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  self.inheritance_column = :_type_disabled
+
   enum type: {教師:0, 医師:1}
 end

@@ -1,0 +1,24 @@
+<div class="card mx-auto" style="max-width:700px;">
+  <div class="card-header alert-info">
+    <div style="font-size:0.7rem;" >
+      <%= @contact_student.user_student.student_id %>
+      <%= @contact_student.user_student.name %>
+      <%= @contact_student.created_at %>
+    </div>
+    <div class="text-center my-3">
+      <strong><%= @contact_student.title %></strong>
+    </div>
+  </div>
+
+  <div class="card-body p-4">
+    <div style="min-height:200px;">
+      <%= simple_format @contact_student.content %>
+    </div>
+
+    <hr>
+
+    <% if current_user_student == @contact_student.user_student %>
+      <%= link_to "編集", edit_contact_student_path, class: "text-info float-right" %>
+    <% end %>
+  </div>
+</div>
