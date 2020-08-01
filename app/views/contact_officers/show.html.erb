@@ -1,0 +1,27 @@
+<div class="card mx-auto" style="max-width:700px;">
+  <div class="card-header alert-info">
+    <div style="font-size:0.7rem;" >
+      <%= @contact_officer.user_officer.officer_id %>
+      <%= @contact_officer.user_officer.name %>
+      <%= @contact_officer.created_at %>
+    </div>
+    <div class="text-center my-3">
+      <strong><%= @contact_officer.title %></strong>
+    </div>
+  </div>
+
+  <div class="card-body p-4">
+    <div style="min-height:200px;">
+      <% if @contact_officer.image.attached? %>
+        <%= image_tag @contact_officer.image.variant(resize: "700x700").processed, style: "width:100%;" %>
+      <% end %>
+      <%= simple_format @contact_officer.content %>
+    </div>
+
+    <hr>
+
+    <% if current_user_officer == @contact_officer.user_officer %>
+      <%= link_to "編集", edit_contact_officer_path, class: "text-info float-right" %>
+    <% end %>
+  </div>
+</div>
