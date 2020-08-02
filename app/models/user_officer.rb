@@ -8,4 +8,5 @@ class UserOfficer < ApplicationRecord
   self.inheritance_column = :_type_disabled
 
   enum type: {教師:0, 医師:1}
+  has_many :contact_officers, dependent: :destroy
 end
