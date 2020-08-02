@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_29_121424) do
+ActiveRecord::Schema.define(version: 2020_08_01_140101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2020_07_29_121424) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "contact_officers", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.bigint "user_officer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_officer_id"], name: "index_contact_officers_on_user_officer_id"
   end
 
   create_table "contact_students", force: :cascade do |t|
@@ -104,5 +113,6 @@ ActiveRecord::Schema.define(version: 2020_07_29_121424) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "contact_officers", "user_officers"
   add_foreign_key "contact_students", "user_students"
 end
