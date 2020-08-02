@@ -1,5 +1,6 @@
 class ContactStudentsController < ApplicationController
   before_action :set_contact_student, only: %i(show edit update destroy)
+  before_action :authenticate_user_student!
 
   def index
     @contact_students = ContactStudent.all
