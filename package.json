@@ -1,5 +1,7 @@
 {
   "name": "medical_mgt_for_students",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
 }
