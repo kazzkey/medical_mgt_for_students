@@ -1,0 +1,25 @@
+<%= form_with(model: [contact_student, student_comment]) do |form| %>
+  <% if student_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student_comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% student_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :content %><br/>
+    <%= form.text_area :content ,class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= form.label :comment_image, class: "btn btn-info" do %>
+      <i class="far fa-image"> 画像ファイルを選択</i>
+    <% end %>
+    <%= form.file_field :comment_image, class: "image_form", style: "display: none;"%>
+  </div>
+  <div class="actions mt-4">
+    <%= form.submit class: "form-control btn btn-info" %>
+  </div>
+<% end %>
