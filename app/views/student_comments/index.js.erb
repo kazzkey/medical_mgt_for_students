@@ -1,0 +1,2 @@
+$("#student_comments_area").html("<%= j(render 'student_comments/index', { student_comments: @student_comment.contact_student.student_comments, contact_student: @student_comment.contact_student }) %>")
+$("textarea").val('')

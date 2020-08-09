@@ -25,3 +25,20 @@
     <% end %>
   </div>
 </div>
+
+<br>
+<div class="card mx-auto" style="max-width:700px;">
+  <div class="card-body p-4">
+    <div class="text-center my-3">
+      <strong>コメント一覧</strong>
+    </div>
+    <div id="student_comments_area">
+      <%= render partial: 'student_comments/index', locals: { student_comments: @student_comments, contact_student: @contact_student } %>
+    </div>
+    <br>
+    <%= render partial: 'student_comments/form', locals: { student_comment: @student_comment, contact_student: @contact_student } %>
+    <hr>
+    <%= link_to '編集', edit_contact_student_path(@contact_student) , class: "text-info float-right"%>
+    <%= link_to '戻る', contact_students_path, class: "text-info float-right"%>
+  </div>
+</div>

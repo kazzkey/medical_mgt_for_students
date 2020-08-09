@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact_student: one
+  content: MyText
+
+two:
+  contact_student: two
+  content: MyText

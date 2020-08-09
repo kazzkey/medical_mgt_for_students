@@ -21,7 +21,10 @@ class ContactStudentsController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def show
+    @student_comments = @contact_student.student_comments
+    @student_comment = @contact_student.student_comments.build
+  end
 
   def update
     if @contact_student.update(contact_student_params)
