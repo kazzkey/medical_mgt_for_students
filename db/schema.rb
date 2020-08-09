@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_014047) do
+ActiveRecord::Schema.define(version: 2020_08_09_020152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,13 +54,13 @@ ActiveRecord::Schema.define(version: 2020_08_09_014047) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "contact_students", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
     t.bigint "user_student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_student_id"], name: "index_contact_students_on_user_student_id"
+    t.index ["user_student_id"], name: "index_contacts_on_user_student_id"
   end
 
   create_table "student_comments", force: :cascade do |t|
@@ -112,6 +112,6 @@ ActiveRecord::Schema.define(version: 2020_08_09_014047) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "contact_students", "user_students"
-  add_foreign_key "student_comments", "contact_students"
+  add_foreign_key "contacts", "user_students"
+  add_foreign_key "student_comments", "contacts", column: "contact_student_id"
 end
