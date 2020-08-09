@@ -1,4 +1,4 @@
-class ContactStudent < ApplicationRecord
+class Contact < ApplicationRecord
   belongs_to :user_student
   has_one_attached :image
   has_many :student_comments, dependent: :destroy
