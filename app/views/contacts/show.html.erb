@@ -1,8 +1,12 @@
 <div class="card mx-auto" style="max-width:700px;">
   <div class="card-header alert-info">
     <div style="font-size:0.7rem;" >
-      <%= @contact.user_student.student_id %>
-      <%= @contact.user_student.name %>
+      <% if @contact.user_student  %>
+        <%= @contact.user_student.student_id %>
+        <%= @contact.user_student.name %>
+      <% elsif @contact.user_officer %>
+        <%= @contact.user_officer.name %>
+      <% end %>
       <%= @contact.created_at %>
     </div>
     <div class="text-center my-3">
@@ -23,22 +27,5 @@
     <% if current_user_student == @contact.user_student %>
       <%= link_to "編集", edit_contact_path, class: "text-info float-right" %>
     <% end %>
-  </div>
-</div>
-
-<br>
-<div class="card mx-auto" style="max-width:700px;">
-  <div class="card-body p-4">
-    <div class="text-center my-3">
-      <strong>コメント一覧</strong>
-    </div>
-    <div id="student_comments_area">
-      <%= render partial: 'student_comments/index', locals: { student_comments: @student_comments, contact: @contact } %>
-    </div>
-    <br>
-    <%= render partial: 'student_comments/form', locals: { student_comment: @student_comment, contact: @contact } %>
-    <hr>
-    <%= link_to '編集', edit_contact_path(@contact) , class: "text-info float-right"%>
-    <%= link_to '戻る', contacts_path, class: "text-info float-right"%>
   </div>
 </div>
