@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_023009) do
+ActiveRecord::Schema.define(version: 2020_08_11_023926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 2020_08_09_023009) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "contact_id"
+    t.bigint "user_student_id"
+    t.bigint "user_officer_id"
+    t.index ["contact_id"], name: "index_comments_on_contact_id"
+    t.index ["user_officer_id"], name: "index_comments_on_user_officer_id"
+    t.index ["user_student_id"], name: "index_comments_on_user_student_id"
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
@@ -63,14 +75,6 @@ ActiveRecord::Schema.define(version: 2020_08_09_023009) do
     t.bigint "user_officer_id"
     t.index ["user_officer_id"], name: "index_contacts_on_user_officer_id"
     t.index ["user_student_id"], name: "index_contacts_on_user_student_id"
-  end
-
-  create_table "student_comments", force: :cascade do |t|
-    t.bigint "contact_student_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contact_student_id"], name: "index_student_comments_on_contact_student_id"
   end
 
   create_table "user_officers", force: :cascade do |t|
@@ -114,7 +118,9 @@ ActiveRecord::Schema.define(version: 2020_08_09_023009) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "contacts"
+  add_foreign_key "comments", "user_officers"
+  add_foreign_key "comments", "user_students"
   add_foreign_key "contacts", "user_officers"
   add_foreign_key "contacts", "user_students"
-  add_foreign_key "student_comments", "contacts", column: "contact_student_id"
 end

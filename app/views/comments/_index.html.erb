@@ -1,0 +1,19 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+      <li class="list-unstyled">
+        <div class="comment-content" id ="this_comment_<%= comment.id %>">
+          <% if comment.comment_image.attached? %>
+            <%= image_tag comment.comment_image.variant(resize: "600x600").processed, style: "width:100%;" %>
+          <% end %>
+          <%= comment.content %>
+          <hr>
+          <%= link_to "コメント編集", edit_contact_comment_path(contact, comment), remote: true , class: "text-info float-right"%>
+          <br>
+          <%= link_to "コメント削除", contact_comment_path(comment.contact_id, comment.id), method: :delete, remote: true,
+                                          data: { confirm: "本当に削除しますか?"} , class: "text-info float-right"%>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

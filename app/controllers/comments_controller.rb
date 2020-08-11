@@ -1,29 +1,29 @@
-class StudentCommentsController < ApplicationController
-before_action :set_contact_student, only: [:create, :edit, :update]
+class CommentsController < ApplicationController
+before_action :set_contact, only: [:create, :edit, :update]
   def create
     # Blogをパラメータの値から探し出し,Blogに紐づくcommentsとしてbuildします。
-    @student_comment = @contact_student.student_comments.build(student_comment_params)
+    @comment = current_user_student_or_user_officer.comments.build(comment_params)
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
-      if @student_comment.save
+      if @comment.save
         format.js { render :index }
       else
-        format.html { redirect_to contact_student_path(@contact_student), notice: '投稿できませんでした...' }
+        format.html { redirect_to contact_path(@contact), notice: '投稿できませんでした...' }
       end
     end
   end
 
   def edit
-    @student_comment = @contact_student.student_comments.find(params[:id])
+    @comment = @contact.comments.find(params[:id])
     respond_to do |format|
       flash.now[:notice] = 'コメントの編集中'
       format.js { render :edit }
     end
   end
   def update
-    @student_comment = @contact_student.student_comments.find(params[:id])
+    @comment = @contact.comments.find(params[:id])
       respond_to do |format|
-        if @student_comment.update(student_comment_params)
+        if @comment.update(comment_params)
           flash.now[:notice] = 'コメントが編集されました'
           format.js { render :index }
         else
@@ -34,8 +34,8 @@ before_action :set_contact_student, only: [:create, :edit, :update]
   end
 
   def destroy
-    @student_comment = Student_comment.find(params[:id])
-    @student_comment.destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
     respond_to do |format|
       flash.now[:notice] = 'コメントが削除されました'
       format.js { render :index }
@@ -44,11 +44,12 @@ before_action :set_contact_student, only: [:create, :edit, :update]
 
   private
   # ストロングパラメーター
-  def student_comment_params
-    params.require(:student_comment).permit(:contact_student_id, :content, :comment_image)
+  def comment_params
+    params.require(:comment).permit(:contact_id, :content, :comment_image)
+          .merge(contact_id: params[:contact_id])
   end
 
-  def set_contact_student
-    @contact_student = ContactStudent.find(params[:contact_student_id])
+  def set_contact
+    @contact = Contact.find(params[:contact_id])
   end
 end

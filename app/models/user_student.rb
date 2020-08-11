@@ -5,4 +5,5 @@ class UserStudent < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :contacts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
