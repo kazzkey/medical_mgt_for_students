@@ -1,17 +1,16 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i(show edit update destroy)
-  before_action :authenticate_user_student!
 
   def index
     @contacts = Contact.all
   end
 
   def new
-    @contact = current_user_student.contacts.build
+    @contact = current_user_student_or_user_officer.contacts.build
   end
 
   def create
-    @contact = current_user_student.contacts.build(contact_params)
+    @contact = current_user_student_or_user_officer.contacts.build(contact_params)
     if @contact.save
       redirect_to contacts_path, notice: "Successfully saved."
     else
@@ -19,11 +18,10 @@ class ContactsController < ApplicationController
     end
   end
 
-  def show; end
 
   def show
-    @student_comments = @contact.student_comments
-    @student_comment = @contact.student_comments.build
+    # @comments = @contact.comments
+    # @comment = @contact.comments.build
   end
 
   def update
@@ -40,6 +38,10 @@ class ContactsController < ApplicationController
   end
 
   private
+
+  def current_user_student_or_user_officer
+    current_user_student || current_user_officer
+  end
 
   def set_contact
     @contact = Contact.find(params[:id])

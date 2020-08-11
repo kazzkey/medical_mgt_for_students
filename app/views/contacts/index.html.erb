@@ -15,11 +15,15 @@
   <tbody>
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= contact.user_student.name.truncate(15) %></td>
+        <% if contact.user_student %>
+          <td><%= contact.user_student.name.truncate(15) %></td>
+        <% elsif contact.user_officer %>
+          <td><%= contact.user_officer.name.truncate(15) %></td>
+        <% end %>
         <td><%= contact.title.truncate(15) %></td>
         <td><%= contact.content.truncate(15) %></td>
         <td><%= link_to 'Show', contact, class: "text-info" %></td>
-        <% if current_user_student == contact.user_student %>
+        <% if current_user_student == contact.user_student || current_user_officer == contact.user_officer%>
           <td><%= link_to 'Edit', edit_contact_path(contact), class: "text-info" %></td>
           <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-info" %></td>
         <% end %>
