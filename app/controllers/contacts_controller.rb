@@ -20,8 +20,8 @@ class ContactsController < ApplicationController
 
 
   def show
-    # @comments = @contact.comments
-    # @comment = @contact.comments.build
+    @comments = @contact.comments
+    @comment = current_user_student_or_user_officer.comments.build
   end
 
   def update
