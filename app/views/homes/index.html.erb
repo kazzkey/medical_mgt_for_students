@@ -1,43 +1,59 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <%= link_to  homes_path, method: :get do %>
-          <i class="fas fa-seedling fa-3x"></i>
+<div class="row">
+  <div class="card rounded border-primary ml-3 mb-3 mr-3" style="width: 33rem;">
+    <h5 class="card-header bg-primary text-white">投稿&一覧</h5>
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= link_to  contacts_path, method: :get do %>
+          <i class="btn btn-primary fas fa-mail-bulk fa-5x"></i>
         <% end %>
-        <% if user_student_signed_in? %>
-          <li class="nav-item active">
-            ~<%= current_user_student.name %>がログインしてます~
-          </li>
-          <li class="nav-item active">
-            <%= link_to "ログアウト", destroy_user_student_session_path, method: :delete , class: 'nav-link'%>
-          </li>
-        <% elsif user_officer_signed_in? %>
-          <li class="nav-item active">
-            ~<%= current_user_officer.name %>がログインしてます~
-          </li>
-          <li class="nav-item active">
-            <%= link_to "ログアウト", destroy_user_officer_session_path ,:method => :delete , class: 'nav-link'%>
-          </li>
-        <% elsif admin_signed_in? %>
-          <li class="nav-item active">
-            ~<%= current_admin.name %>がログインしてます~
-          </li>
-          <li class="nav-item active">
-            <%= link_to "ログアウト", destroy_admin_session_path ,:method => :delete , class: 'nav-link'%>
-          </li>
-        <% else %>
-          <li class="nav-item active">
-            <%= link_to "ユーザー新規登録", new_user_student_registration_path , class: 'nav-link'%>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "ログイン", new_user_student_session_path, class: 'nav-link' %>
-          </li>
-        <% end %>
-      </ul>
+      </h5>
+      <p class="card-text">病気や怪我などをした際には、<br>こちらのページを開いて連絡してください 📩</p>
+      <%= link_to "投稿&一覧" ,contacts_path, class: "form-control btn btn-primary" %>
     </div>
-  </nav>
-</header>
+  </div>
 
-<h1>Homes#index</h1>
-<p>Find me in app/views/homes/index.html.erb</p>
+  <div class="card rounded border-success ml-3 mb-3 mr-3" style="width: 33rem;">
+    <h5 class="card-header bg-success text-white">メモ帳</h5>
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= link_to  contacts_path, method: :get do %>
+          <i class="btn btn-success fas fa-copy fa-5x"></i>
+        <% end %>
+      </h5>
+      <p class="card-text">
+        何かメモがある際は、こちらに記入 📝<br>※メモを取る際、不必要なことは書かないこと。
+      </p>
+      <%= link_to "メモ帳" ,contacts_path, class: "form-control btn btn-success" %>
+    </div>
+  </div>
+
+  <div class="card rounded border-danger ml-3 mb-3 mr-3" style="width: 33rem;">
+    <h5 class="card-header bg-danger text-white">定期診断</h5>
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= link_to  contacts_path, method: :get do %>
+          <i class="btn btn-danger fas fa-copy fa-5x"></i>
+        <% end %>
+      </h5>
+      <p class="card-text">
+        3ヶ月に1回行う定期診断チェックがあります。<br>こちらのページから行なってください👩‍⚕️
+      </p>
+      <%= link_to "定期診断" ,contacts_path, class: "form-control btn btn-danger" %>
+    </div>
+  </div>
+
+  <div class="card rounded border-warning ml-3 mb-3 mr-3" style="width: 33rem;">
+    <h5 class="card-header bg-warning text-white">プロフィール</h5>
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= link_to  contacts_path, method: :get do %>
+          <i class="btn btn-warning fas fa-home fa-5x"></i>
+        <% end %>
+      </h5>
+      <p class="card-text">
+        プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の自分の投稿や自分に向けられたコメントの一覧が確認できます。
+      </p>
+      <%= link_to "プロフィール" ,contacts_path, class: "form-control btn btn-warning" %>
+    </div>
+  </div>
+</div>
