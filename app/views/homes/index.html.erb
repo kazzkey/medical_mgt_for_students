@@ -17,7 +17,7 @@
     <div class="card-body">
       <h5 class="card-title">
         <%= link_to  contacts_path, method: :get do %>
-          <i class="btn btn-success fas fa-copy fa-5x"></i>
+          <i class="btn btn-success fas fa-copy fa-5x fa-fw"></i>
         <% end %>
       </h5>
       <p class="card-text">
@@ -32,7 +32,7 @@
     <div class="card-body">
       <h5 class="card-title">
         <%= link_to  contacts_path, method: :get do %>
-          <i class="btn btn-danger fas fa-copy fa-5x"></i>
+          <i class="btn btn-danger fas fa-copy fa-5x fa-fw"></i>
         <% end %>
       </h5>
       <p class="card-text">
@@ -47,13 +47,13 @@
     <div class="card-body">
       <h5 class="card-title">
         <%= link_to  contacts_path, method: :get do %>
-          <i class="btn btn-warning fas fa-home fa-5x"></i>
+          <i class="btn btn-warning text-white fas fa-home fa-5x"></i>
         <% end %>
       </h5>
       <p class="card-text">
         プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の自分の投稿や自分に向けられたコメントの一覧が確認できます。
       </p>
-      <%= link_to "プロフィール" ,contacts_path, class: "form-control btn btn-warning" %>
+      <%= link_to "プロフィール" ,contacts_path, class: "text-white form-control btn btn-warning" %>
     </div>
   </div>
 </div>
