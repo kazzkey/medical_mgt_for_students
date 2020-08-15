@@ -1,0 +1,19 @@
+<div class="text-center">
+  <h2 class="text-info my-5">学生医療管理プログラム</h2>
+
+  <div>
+    <%= link_to "学生アカウントでログイン",new_user_student_session_path,
+      class: "btn btn-info", style: "width:400px;"
+    %>
+  </div>
+
+  <div class="row mx-auto my-5 w-50">
+    <hr class="col"><span class="text-secondary mx-2">または</span><hr class="col">
+  </div>
+
+  <div>
+    <%= link_to "教員/医師アカウントでログイン", new_user_officer_session_path,
+      class: "btn btn-info", style: "width:400px;"
+    %>
+  </div>
+</div>

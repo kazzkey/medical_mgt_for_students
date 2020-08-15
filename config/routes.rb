@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'homes#index'
+  get 'login', to: 'login#index'
   resources :homes, :only => [:index]
   resources :contacts do
     resources :comments
