@@ -48,6 +48,6 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit %i(title content image)
+    params.require(:contact).permit %i(title content image release)
   end
 end

@@ -17,6 +17,16 @@
       <%= f.file_field :image, class: "image_form", style: "display: none;"%>
     </div>
 
+    <div class="form-group">
+      <div class="small form-text text-danger">
+        ※公開を選択すると医療関係者に情報が開示されます。
+      </div>
+      <div class="custom-switch">
+        <%= f.check_box :release, class: "custom-control-input" %>
+        <%= f.label :release, "公開しますか？", class: "custom-control-label" %>
+      </div>
+    </div>
+
     <div class="form-row">
       <div class="col">
         <%= f.submit "送信", class: "btn btn-info form-control" %>

@@ -1,6 +1,6 @@
 <div class="card mx-auto" style="max-width:700px;">
   <div class="card-header alert-info">
-    <div style="font-size:0.7rem;" >
+    <div class="float-left" style="font-size:0.7rem;" >
       <% if @contact.user_student  %>
         <%= @contact.user_student.student_id %>
         <%= @contact.user_student.name %>
@@ -9,6 +9,14 @@
       <% end %>
       <%= @contact.created_at %>
     </div>
+    <div class="float-right">
+      <% if @contact.release %>
+        <strong class="text-danger border border-danger p-1">公開中</strong>
+      <% elsif %>
+        <strong class="border border-info p-1">非公開</strong>
+      <% end %>
+    </div>
+    <br>
     <div class="text-center my-3">
       <strong><%= @contact.title %></strong>
     </div>
