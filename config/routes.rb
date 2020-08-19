@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :user_officers
   devise_for :user_students
+  resources :user_students, only: [:show]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
