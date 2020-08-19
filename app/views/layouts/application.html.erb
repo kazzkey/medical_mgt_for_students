@@ -25,6 +25,9 @@
               <li class="nav-item active">
                 <%= link_to "ログアウト", destroy_user_student_session_path, method: :delete , class: 'nav-link'%>
               </li>
+              <li class="nav-item active">
+                <%= link_to "プロフィール", user_student_path(current_user_student.id), class: 'nav-link'%>
+              </li>
             <% elsif user_officer_signed_in? %>
               <li class="nav-item active">
                 <%= current_user_officer.name %>さん
