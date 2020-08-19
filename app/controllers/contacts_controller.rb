@@ -2,7 +2,11 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i(show edit update destroy)
 
   def index
-    @contacts = Contact.all
+    if current_user_officer && current_user_officer.type == '医師'
+      @contacts = Contact.where(release: true)
+    else
+      @contacts = Contact.all
+    end
   end
 
   def new
@@ -44,10 +48,14 @@ class ContactsController < ApplicationController
   end
 
   def set_contact
-    @contact = Contact.find(params[:id])
+    if current_user_officer && current_user_officer.type == '医師'
+      @contact = Contact.where(release: true).find(params[:id])
+    else
+      @contact = Contact.find(params[:id])
+    end
   end
 
   def contact_params
-    params.require(:contact).permit %i(title content image)
+    params.require(:contact).permit %i(title content image release)
   end
 end
