@@ -1,0 +1,39 @@
+<div class="mx-auto p-4 border border-info rounded" style="border:solid 1px #343a40; max-width:1200px;">
+  <h2>プロフィール画面</h2><br/>
+  <br>
+  <h5>ユーザー名</h5>
+  <p class="form-control alert alert-info rounded"><%= @user_student.name %></p>
+  <h5>メールアドレス</h5>
+  <p class="form-control alert alert-info rounded"><%= @user_student.email %></p>
+  <h5>生徒ID</h5>
+  <p class="form-control alert alert-info rounded"><%= @user_student.student_id %></p>
+  <h5>学校ID</h5>
+  <p class="form-control alert alert-info rounded"><%= @user_student.school_id %></p><br/><br/>
+
+  <%= link_to "編集", edit_user_student_registration_path , class: "btn btn-info"%>
+</div>
+
+<div class="mx-auto p-4 border border-info rounded mt-3" style="border:solid 1px #343a40; max-width:1200px;">
+  <h4><%= current_user_student.name%>さんの過去の投稿記録</h4><br/>
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contacts.each do |student_contact| %>
+        <tr>
+          <td><%= student_contact.title.truncate(15) %></td>
+          <td><%= student_contact.content.truncate(15) %></td>
+          <td><%= link_to 'Show', student_contact, class: "text-info" %></td>
+          <td><%= link_to 'Edit', edit_contact_path(student_contact), class: "text-info" %></td>
+          <td><%= link_to 'Destroy', student_contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-info" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
