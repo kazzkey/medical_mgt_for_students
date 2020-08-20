@@ -3,10 +3,11 @@ class ContactsController < ApplicationController
 
   def index
     if current_user_officer && current_user_officer.type == '医師'
-      @contacts = Contact.where(release: true).page(params[:page]).per(10)
+      @q = Contact.where(release: true).page(params[:page]).per(10).ransack(params[:q])
     else
-      @contacts = Contact.page(params[:page]).per(10)
+      @q = Contact.page(params[:page]).per(10).ransack(params[:q])
     end
+    @contacts = @q.result(distinct: true).includes(:user_student, :user_officer)
   end
 
   def new
