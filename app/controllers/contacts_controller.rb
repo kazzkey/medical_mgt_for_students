@@ -3,9 +3,9 @@ class ContactsController < ApplicationController
 
   def index
     if current_user_officer && current_user_officer.type == '医師'
-      @contacts = Contact.where(release: true)
+      @contacts = Contact.where(release: true).page(params[:page]).per(10)
     else
-      @contacts = Contact.all
+      @contacts = Contact.page(params[:page]).per(10)
     end
   end
 
