@@ -26,6 +26,61 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control" %>
     </div>
 
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <%= f.label :birth_date %><br />
+        <div class="input-group">
+          <%= f.date_select :birth_date, { order: [:year, :month, :day],
+                                         start_year: Date.current.year - (18),
+                                         end_year: Date.current.year,
+                                         prompt: {year: '年', month: '月', day: '日'}},
+                                         class: 'form-control'
+          %>
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <%= f.label :grade %><br />
+        <%= f.select :grade, {小学1年生: '小学1年生',
+                              小学2年生: '小学2年生',
+                              小学3年生: '小学3年生',
+                              小学4年生: '小学4年生',
+                              小学5年生: '小学5年生',
+                              小学6年生: '小学6年生',
+                              中学1年生: '中学1年生',
+                              中学2年生: '中学2年生',
+                              中学3年生: '中学3年生',
+                              高校1年生: '高校1年生',
+                              高校2年生: '高校2年生',
+                              高校3年生: '高校3年生',
+                            },
+                            { include_blank: '学年記入'},
+                            {  class: "form-control", required: true }
+        %>
+      </div>
+
+      <div class="form-group col-md-3">
+        <%= f.label :blood_type %><br />
+        <%= f.select :blood_type, {A型: 'A型',
+                              B型: 'B型',
+                              AB型: 'AB型',
+                              O型: 'O型',
+                            },
+                            { include_blank: '血液型'},
+                            {  class: "form-control",required: true }
+        %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :profile_image%><br />
+      <%= f.label :profile_image, class: "btn btn-info" do %>
+        <i class="far fa-image"> プロフィール画像ファイルを選択</i>
+      <% end %>
+      <%= f.file_field :profile_image, class: "image_form", style: "display: none;"%>
+    </div>
+
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
     <% end %>
