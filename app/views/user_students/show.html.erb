@@ -1,16 +1,60 @@
 <div class="mx-auto p-4 border border-info rounded" style="border:solid 1px #343a40; max-width:1200px;">
-  <h2>プロフィール画面</h2><br/>
+  <h2 class="text-center">プロフィール画面</h2><br/>
   <br>
-  <h5>ユーザー名</h5>
-  <p class="form-control alert alert-info rounded"><%= @user_student.name %></p>
-  <h5>メールアドレス</h5>
-  <p class="form-control alert alert-info rounded"><%= @user_student.email %></p>
-  <h5>生徒ID</h5>
-  <p class="form-control alert alert-info rounded"><%= @user_student.student_id %></p>
-  <h5>学校ID</h5>
-  <p class="form-control alert alert-info rounded"><%= @user_student.school_id %></p><br/><br/>
+  <div class="row">
+    <div class="float-left">
+      <% if @user_student.profile_image.attached? %>
+      <%= image_tag @user_student.profile_image.variant(combine_options:{gravity: :center,
+                                                                        border:'2',
+                                                                        resize:"200x200^",
+                                                                        crop:"220x220+0+0"}).processed,
+                                                                        class: "img border-info"%><br/>
+      <% end %>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>ユーザー名</h5>
+          <p class="alert alert-info rounded"><%= @user_student.name %></p>
+        </div>
+        <div class="col-md-6">
+          <h5>メールアドレス</h5>
+          <p class="alert alert-info rounded"><%= @user_student.email %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>生徒ID</h5>
+          <p class="alert alert-info rounded"><%= @user_student.student_id %></p>
+        </div>
+        <div class="col-md-6">
+          <h5>学校ID</h5>
+          <p class="alert alert-info rounded"><%= @user_student.school_id %></p>
+        </div>
+      </div>
+      <br/>
+      <hr>
+      <br/>
+      <div class="row">
+        <div class="col-md-4">
+          <h5>生年月日</h5>
+          <p class="alert alert-info rounded form"><%= @user_student.birth_date %></p>
+        </div>
+        <div class="col-md-4">
+          <h5>学年</h5>
+          <p class="alert alert-info rounded form"><%= @user_student.grade %></p>
+        </div>
+        <div class="col-md-4">
+          <h5>血液型</h5>
+          <p class="alert alert-info rounded form"><%= @user_student.blood_type %></p>
+        </div>
+      </div>
 
-  <%= link_to "編集", edit_user_student_registration_path , class: "btn btn-info"%>
+      <br>
+    </div>
+  </div>
+  <%= link_to "編集", edit_user_student_registration_path , class: "btn btn-info float-right"%>
+  <br>
 </div>
 
 <div class="mx-auto p-4 border border-info rounded mt-3" style="border:solid 1px #343a40; max-width:1200px;">
