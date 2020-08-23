@@ -53,7 +53,9 @@
       <p class="card-text">
         プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の自分の投稿や自分に向けられたコメントの一覧が確認できます。
       </p>
-      <%= link_to "プロフィール" ,user_student_path(current_user_student.id), class: "text-white form-control btn btn-warning" %>
+      <% if current_user_student %>
+        <%= link_to "プロフィール" ,user_student_path(current_user_student.id), class: "text-white form-control btn btn-warning" %>
+      <% end %>
     </div>
   </div>
 </div>
