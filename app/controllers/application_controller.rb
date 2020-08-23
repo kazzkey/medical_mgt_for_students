@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
     current_user_student || current_user_officer
   end
 
+  def authenticate!
+    if user_officer_signed_in?
+      authenticate_user_officer!
+    else
+      authenticate_user_student!
+    end
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,

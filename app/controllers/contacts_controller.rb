@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  before_action :authenticate!
   before_action :set_contact, only: %i(show edit update destroy)
 
   def index
