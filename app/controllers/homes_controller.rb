@@ -3,14 +3,4 @@ class HomesController < ApplicationController
 
   def index
   end
-
-  private
-
-  def authenticate!
-    if user_officer_signed_in?
-      authenticate_user_officer!
-    else
-      authenticate_user_student!
-    end
-  end
 end
