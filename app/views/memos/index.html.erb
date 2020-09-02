@@ -1,0 +1,8 @@
+
+<% @memos.each do |memo| %>
+  <%= memo.content.html_safe %>
+  <%= link_to "編集", edit_memo_path(memo) %>
+  <%= link_to "削除", memo, method: :delete, data: { confirm: 'Are you sure?' }%>
+<% end %>
+
+<%= link_to "新規作成", new_memo_path, class: "btn btn-info form-control" %>
