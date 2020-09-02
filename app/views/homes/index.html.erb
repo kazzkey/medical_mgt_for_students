@@ -16,14 +16,14 @@
     <h5 class="card-header bg-success text-white">メモ帳</h5>
     <div class="card-body">
       <h5 class="card-title">
-        <%= link_to  contacts_path, method: :get do %>
+        <%= link_to  memos_path, method: :get do %>
           <i class="btn btn-success fas fa-copy fa-5x fa-fw"></i>
         <% end %>
       </h5>
       <p class="card-text">
-        何かメモがある際は、こちらに記入 📝<br>※メモを取る際、不必要なことは書かないこと。
+        何かメモがある際は、こちらに記入 📝
       </p>
-      <%= link_to "メモ帳" ,contacts_path, class: "form-control btn btn-success" %>
+      <%= link_to "メモ帳" ,memos_path, class: "form-control btn btn-success" %>
     </div>
   </div>
 
