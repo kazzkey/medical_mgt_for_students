@@ -1,8 +1,25 @@
+<h1>メモ一覧</h1>
+<p>生徒情報を共有するツールです。</p>
 
-<% @memos.each do |memo| %>
-  <%= memo.content.html_safe %>
-  <%= link_to "編集", edit_memo_path(memo) %>
-  <%= link_to "削除", memo, method: :delete, data: { confirm: 'Are you sure?' }%>
-<% end %>
+<div>
+  <%= link_to "新規作成", new_memo_path, class: "btn btn-info float-right" %>
+</div>
 
-<%= link_to "新規作成", new_memo_path, class: "btn btn-info form-control" %>
+<div style="margin-top:100px;">
+  <% @memos.each do |memo| %>
+    <div class="card my-3">
+      <div class="card-header alert-info">
+        投稿者：<%= memo.user_officer.name %>
+      </div>
+      <div class="card-body">
+        <%= memo.content.html_safe %>
+        <% if memo.user_officer == current_user_officer %>
+          <div class="text-right">
+            <%= link_to "編集", edit_memo_path(memo) %>
+            <%= link_to "削除", memo, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

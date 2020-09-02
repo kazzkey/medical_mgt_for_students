@@ -3,7 +3,7 @@ class MemosController < ApplicationController
   before_action :set_memo, only: %i(edit update destroy)
 
   def index
-    @memos = Memo.all
+    @memos = Memo.order(id: :desc)
   end
 
   def new
