@@ -1,5 +1,6 @@
 class MemosController < ApplicationController
   before_action :authenticate_user_officer!
+  before_action :user_check
   before_action :set_memo, only: %i(edit update destroy)
 
   def index
@@ -42,5 +43,11 @@ class MemosController < ApplicationController
 
   def memo_params
     params.require(:memo).permit %i(content)
+  end
+
+  def user_check
+    if current_user_officer && current_user_officer.type == '医師'
+      redirect_to root_path, notice: "この機能は教員のみが使える機能です。"
+    end
   end
 end
