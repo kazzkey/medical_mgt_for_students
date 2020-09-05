@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_153918) do
+ActiveRecord::Schema.define(version: 2020_09_04_075203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,24 @@ ActiveRecord::Schema.define(version: 2020_08_20_153918) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "checks", force: :cascade do |t|
+    t.float "height"
+    t.float "body_weight"
+    t.float "sitting_height"
+    t.float "naked_eyesight"
+    t.float "corrected_eyesight"
+    t.integer "hearing"
+    t.integer "urine"
+    t.integer "electro_cardiogram"
+    t.integer "nutritional_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_student_id"
+    t.bigint "user_officer_id"
+    t.index ["user_officer_id"], name: "index_checks_on_user_officer_id"
+    t.index ["user_student_id"], name: "index_checks_on_user_student_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -122,6 +140,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_153918) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "checks", "user_officers"
+  add_foreign_key "checks", "user_students"
   add_foreign_key "comments", "contacts"
   add_foreign_key "comments", "user_officers"
   add_foreign_key "comments", "user_students"

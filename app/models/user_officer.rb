@@ -10,4 +10,5 @@ class UserOfficer < ApplicationRecord
   enum type: {教師:0, 医師:1}
   has_many :contacts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :checks, dependent: :destroy
 end

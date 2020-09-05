@@ -6,6 +6,7 @@ class UserStudent < ApplicationRecord
 
   has_many :contacts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :checks, dependent: :destroy
   has_one_attached :profile_image
   enum grade: {小学1年生:1,
                小学2年生:2,
