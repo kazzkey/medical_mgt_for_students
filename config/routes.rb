@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :contacts do
     resources :comments
   end
+  resources :checks
   devise_for :admins
   devise_for :user_officers
   devise_for :user_students
