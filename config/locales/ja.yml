@@ -19,7 +19,26 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+      check: "20%y年%m月%d日(%a)"
       short: "%y/%m/%d %H:%M"
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+  activerecord:
+    models:
+      check: 健康診断
+      user_student: 生徒
+    attributes:
+      check:
+        user_student: 名前
+        school_id: 学校ID
+        height: 身長
+        body_weight: 体重
+        sitting_height: 座高
+        naked_eyesight: 裸眼視力
+        corrected_eyesight: 矯正視力
+        hearing: 聴力
+        urine: 尿検査
+        electro_cardiogram: 心電図検査
+        nutritional_status: 栄養状態
