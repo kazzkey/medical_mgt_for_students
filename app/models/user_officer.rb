@@ -11,4 +11,5 @@ class UserOfficer < ApplicationRecord
   has_many :contacts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :checks, dependent: :destroy
+  has_many :memos, dependent: :destroy
 end

@@ -1,0 +1,8 @@
+<%= form_with(model: memo, local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.text_area :content, 'data-provider': :summernote %>
+  </div>
+
+  <%= f.submit "送信", class: "btn btn-info form-control" %>
+<% end %>
