@@ -3,7 +3,7 @@ FactoryBot.define do
     id { 1 }
     name { '山田花子' }
     student_id { 202020 }
-    student_id { 1 }
+    school_id { 1 }
     email { 'yamada@example.com' }
     password { 'password' }
     birth_date { '2002-01-01' }
