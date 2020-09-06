@@ -4,6 +4,6 @@ FactoryBot.define do
     title { 'TestTitle' }
     content { 'Hey, this is a test.' }
     user_student_id { 1 }
-    release { true }
+    release { false }
   end
 end
