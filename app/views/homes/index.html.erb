@@ -28,17 +28,17 @@
   </div>
 
   <div class="card rounded border-danger ml-3 mb-3 mr-3" style="width: 33rem;">
-    <h5 class="card-header bg-danger text-white">定期診断</h5>
+    <h5 class="card-header bg-danger text-white">生徒定期診断(教員/医師専用)</h5>
     <div class="card-body">
       <h5 class="card-title">
-        <%= link_to  contacts_path, method: :get do %>
+        <%= link_to  checks_path, method: :get do %>
           <i class="btn btn-danger fas fa-copy fa-5x fa-fw"></i>
         <% end %>
       </h5>
       <p class="card-text">
-        3ヶ月に1回行う定期診断チェックがあります。<br>こちらのページから行なってください👩‍⚕️
+        3ヶ月に1回行う生徒の定期診断の記入ができます👨‍⚕️
       </p>
-      <%= link_to "定期診断" ,contacts_path, class: "form-control btn btn-danger" %>
+      <%= link_to "定期診断" ,checks_path, class: "form-control btn btn-danger" %>
     </div>
   </div>
 
@@ -51,7 +51,7 @@
         <% end %>
       </h5>
       <p class="card-text">
-        プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の自分の投稿や自分に向けられたコメントの一覧が確認できます。
+        プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の投稿&健康診断の結果やコメントの一覧が確認できます。
       </p>
       <% if current_user_student %>
         <%= link_to "プロフィール" ,user_student_path(current_user_student.id), class: "text-white form-control btn btn-warning" %>

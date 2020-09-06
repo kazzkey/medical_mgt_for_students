@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   resources :contacts do
     resources :comments
   end
-
+  resources :checks
   resources :memos, only: %i(index new create edit update destroy)
-
   devise_for :admins
   devise_for :user_officers
   devise_for :user_students

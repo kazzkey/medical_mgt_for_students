@@ -1,0 +1,65 @@
+<div class="mx-auto p-4 border border-info rounded" style="border:solid 1px #343a40; max-width:1200px;">
+  <h2 class="text-center">診断結果画面</h2><br/>
+  <div class="col">
+    <div class="row">
+      <div class="col-md-9"></div>
+      <div class="col-md-3">
+        <h5>診断日</h5>
+        <p class="alert alert-primary rounded"><%= l @check.created_at, format: :check %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>生徒名</h5>
+        <p class="alert alert-info rounded"><%= @check.user_student.name %></p>
+      </div>
+      <div class="col-md-6">
+        <h5>学校ID</h5>
+        <p class="alert alert-info rounded"><%= @check.user_student.school_id %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h5>身長</h5>
+        <p class="alert alert-info rounded"><%= @check.height %></p>
+      </div>
+      <div class="col-md-4">
+        <h5>体重</h5>
+        <p class="alert alert-info rounded"><%= @check.body_weight %></p>
+      </div>
+      <div class="col-md-4">
+        <h5>座高</h5>
+        <p class="alert alert-info rounded"><%= @check.sitting_height %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h5>裸眼視力</h5>
+        <p class="alert alert-info rounded"><%= @check.naked_eyesight %></p>
+      </div>
+      <div class="col-md-4">
+        <h5>矯正視力</h5>
+        <p class="alert alert-info rounded form"><%= @check.corrected_eyesight %></p>
+      </div>
+      <div class="col-md-4">
+        <h5>聴力</h5>
+        <p class="alert alert-info rounded form"><%= @check.hearing %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h5>尿検査</h5>
+        <p class="alert alert-info rounded form"><%= @check.urine %></p>
+      </div>
+      <div class="col-md-4">
+        <h5>心電図検査</h5>
+        <p class="alert alert-info rounded form"><%= @check.electro_cardiogram %></p>
+      </div>
+      <div class="col-md-4">
+        <h5>血液型</h5>
+        <p class="alert alert-info rounded form"><%= @check.nutritional_status %></p>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>

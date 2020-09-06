@@ -1,0 +1,108 @@
+<%= form_with(model: check, local: true) do |f| %>
+
+  <div class="m-4 p-2">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= f.label :user_student %>
+        <%= f.collection_select :user_student_id, UserStudent.all, :id, :name,{prompt: "選択してください"}, {class: "form-control"} %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.label :school_id %>
+        <%= f.collection_select :school_id, UserStudent.all, :id, :school_id,{prompt: "選択してください"}, {class: "form-control"} %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <%= f.label :height %>
+        <%= f.text_field :height, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-4">
+        <%= f.label :body_weight %>
+        <%= f.text_field :body_weight, autofocus: true, class: "form-control"%>
+      </div>
+
+      <div class="form-group col-md-4">
+        <%= f.label :sitting_height %>
+        <%= f.text_field :sitting_height, autofocus: true, class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= f.label :naked_eyesight %>
+        <%= f.text_field :naked_eyesight, autofocus: true, class: "form-control"%>
+      </div>
+
+      <div class="form-group col-md-6">
+        <%= f.label :corrected_eyesight %>
+        <%= f.text_field :corrected_eyesight, autofocus: true, class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= f.label :hearing %><br />
+        <%= f.select :hearing, {よく聞こえている: 'よく聞こえている',
+                                聞こえている: '聞こえている',
+                                少し聞こえずらい: '少し聞こえずらい',
+                                医師に相談: '医師に相談',
+                          },
+                          { include_blank: '段階選択'},
+                          {  class: "form-control", required: true }
+        %>
+      </div>
+    </div>
+
+    <div class="form-row" style="padding-bottom:2.5rem;">
+      <% if user_officer_signed_in? && current_user_officer.type == '医師'%>
+        <div class="form-group col-md-4">
+          <%= f.label :urine %><br />
+          <%= f.select :urine, {健康: '健康',
+                                問題なし: '問題なし',
+                                少し疲れあり: '少し疲れあり',
+                                疲れ有り: '3',
+                            },
+                            { include_blank: '段階選択'},
+                            {  class: "form-control", required: true }
+          %>
+        </div>
+
+        <div class="form-group col-md-4">
+          <%= f.label :electro_cardiogram %><br />
+          <%= f.select :electro_cardiogram, {異常なし: '異常なし',
+                                             健康上異常なし: '健康上異常なし',
+                                             運動を控える: '運動を控える',
+                                             問題あり: '問題あり',
+                                          },
+                                          { include_blank: '段階選択'},
+                                          {  class: "form-control", required: true }
+          %>
+        </div>
+
+
+        <div class="form-group col-md-4">
+          <%= f.label :nutritional_status %><br />
+          <%= f.select :nutritional_status, {充分取れている: '充分取れている',
+                                             取れている: '取れている',
+                                             少し取れている: '少し取れている',
+                                             取れていない: '取れていない',
+                                          },
+                                          { include_blank: '段階選択'},
+                                          {  class: "form-control", required: true }
+          %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-row">
+      <div class="col">
+        <%= f.submit "送信", class: "btn btn-info form-control" %>
+      </div>
+      <div class="col">
+        <%= link_to "戻る", checks_path, class: "btn btn-outline-info form-control" %>
+      </div>
+    </div>
+  </div>
+<% end %>
