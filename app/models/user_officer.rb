@@ -12,4 +12,9 @@ class UserOfficer < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :checks, dependent: :destroy
   has_many :memos, dependent: :destroy
+
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :email, uniqueness: true, length: { maximum: 255 },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :type, presence: true
 end
