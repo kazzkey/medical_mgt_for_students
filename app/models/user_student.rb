@@ -8,6 +8,20 @@ class UserStudent < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :checks, dependent: :destroy
   has_one_attached :profile_image
+
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :email, uniqueness: true, length: { maximum: 255 },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :student_id,
+            presence: true, uniqueness: true,
+            numericality: { only_integer: true, greater_than: 0 }
+  validates :school_id,
+            presence: true,
+            numericality: { only_integer: true, greater_than: 0 }
+  validates :birth_date, presence: true
+  validates :grade, presence: true
+  validates :blood_type, presence: true
+
   enum grade: {小学1年生:1,
                小学2年生:2,
                小学3年生:3,
