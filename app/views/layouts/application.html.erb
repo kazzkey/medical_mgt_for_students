@@ -29,14 +29,14 @@
                 <%= link_to "プロフィール", user_student_path(current_user_student.id), class: 'nav-link'%>
               </li>
             <% elsif user_officer_signed_in? %>
-              <li class="nav-item active">
+              <li class="nav-item active nav-link">
                 <%= current_user_officer.name %>さん
               </li>
               <li class="nav-item active">
                 <%= link_to "ログアウト", destroy_user_officer_session_path ,:method => :delete , class: 'nav-link'%>
               </li>
             <% elsif admin_signed_in? %>
-              <li class="nav-item active">
+              <li class="nav-item active nav-link">
                 <%= current_admin.name %>さん
               </li>
               <li class="nav-item active">
