@@ -45,16 +45,23 @@
   <div class="card rounded border-warning ml-3 mb-3 mr-3" style="width: 33rem;">
     <h5 class="card-header bg-warning text-white">プロフィール</h5>
     <div class="card-body">
-      <h5 class="card-title">
-        <%= link_to  contacts_path, method: :get do %>
-          <i class="btn btn-warning text-white fas fa-home fa-5x"></i>
-        <% end %>
-      </h5>
-      <p class="card-text">
-        プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の投稿&健康診断の結果やコメントの一覧が確認できます。
-      </p>
       <% if current_user_student %>
+        <h5 class="card-title">
+          <%= link_to  user_student_path(current_user_student.id), method: :get do %>
+            <i class="btn btn-warning text-white fas fa-home fa-5x"></i>
+          <% end %>
+        </h5>
+        <p class="card-text">
+          プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の投稿&健康診断の結果やコメントの一覧が確認できます。
+        </p>
         <%= link_to "プロフィール" ,user_student_path(current_user_student.id), class: "text-white form-control btn btn-warning" %>
+      <% else %>
+        <h5 class="card-title">
+            <i class="btn btn-warning text-white fas fa-home fa-5x"></i>
+        </h5>
+        <p class="card-text">
+          プロフィールページは教師・医師の方は閲覧できません。
+        </p>
       <% end %>
     </div>
   </div>
