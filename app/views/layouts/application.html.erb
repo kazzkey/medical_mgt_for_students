@@ -19,34 +19,31 @@
               <i class="btn btn-info fas fa-laptop-medical fa-3x"></i>
             <% end %>
             <% if user_student_signed_in? %>
-              <li class="nav-item active nav-link">
+              <li class="nav-item active nav-link ml-3 mt-2 mr-3">
                 <%= current_user_student.name %>さん
               </li>
-              <li class="nav-item active">
+              <li class="nav-item active mt-2 mr-3">
                 <%= link_to "ログアウト", destroy_user_student_session_path, method: :delete , class: 'nav-link'%>
               </li>
-              <li class="nav-item active">
-                <%= link_to "プロフィール", user_student_path(current_user_student.id), class: 'nav-link'%>
-              </li>
             <% elsif user_officer_signed_in? %>
-              <li class="nav-item active nav-link">
+              <li class="nav-item active nav-link ml-3 mt-2 mr-3">
                 <%= current_user_officer.name %>さん
               </li>
-              <li class="nav-item active">
+              <li class="nav-item active mt-2">
                 <%= link_to "ログアウト", destroy_user_officer_session_path ,:method => :delete , class: 'nav-link'%>
               </li>
             <% elsif admin_signed_in? %>
-              <li class="nav-item active nav-link">
+              <li class="nav-item active nav-link ml-3 mt-2 mr-3">
                 <%= current_admin.name %>さん
               </li>
-              <li class="nav-item active">
+              <li class="nav-item active mt-2">
                 <%= link_to "ログアウト", destroy_admin_session_path ,:method => :delete , class: 'nav-link'%>
               </li>
             <% else %>
-              <li class="nav-item active">
+              <li class="nav-item active ml-3 mt-2 mr-3">
                 <%= link_to "ユーザー新規登録", new_user_student_registration_path , class: 'nav-link'%>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item active mt-2">
                 <%= link_to "ログイン", new_user_student_session_path, class: 'nav-link' %>
               </li>
             <% end %>
