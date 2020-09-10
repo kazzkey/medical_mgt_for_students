@@ -1,61 +1,73 @@
-<div class="row">
-  <div class="card rounded border-primary ml-3 mb-3 mr-3" style="width: 33rem;">
-    <h5 class="card-header bg-primary text-white">投稿&一覧</h5>
-    <div class="card-body">
-      <h5 class="card-title">
-        <%= link_to  contacts_path, method: :get do %>
-          <i class="btn btn-primary fas fa-mail-bulk fa-5x"></i>
-        <% end %>
-      </h5>
-      <p class="card-text">病気や怪我などをした際には、<br>こちらのページを開いて連絡してください 📩</p>
-      <%= link_to "投稿&一覧" ,contacts_path, class: "form-control btn btn-primary" %>
-    </div>
-  </div>
+<div class="col text-center">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="card rounded border-primary ml-3 mb-5 mr-3" style="width: 40rem;">
+          <h5 class="card-header bg-primary text-white">投稿&一覧</h5>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to  contacts_path, method: :get do %>
+                <i class="btn btn-primary fas fa-mail-bulk fa-5x"></i>
+              <% end %>
+            </h5>
+            <p class="card-text">病気や怪我などをした際には、<br>こちらのページを開いて連絡してください 📩</p>
+            <%= link_to "投稿&一覧" ,contacts_path, class: "form-control btn btn-primary" %>
+          </div>
+        </div>
 
-  <div class="card rounded border-success ml-3 mb-3 mr-3" style="width: 33rem;">
-    <h5 class="card-header bg-success text-white">メモ帳</h5>
-    <div class="card-body">
-      <h5 class="card-title">
-        <%= link_to  memos_path, method: :get do %>
-          <i class="btn btn-success fas fa-copy fa-5x fa-fw"></i>
+        <% if current_user_officer %>
+          <div class="card rounded border-success ml-3 mb-5 mr-3" style="width: 40rem;">
+            <h5 class="card-header bg-success text-white">メモ帳</h5>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= link_to  memos_path, method: :get do %>
+                  <i class="btn btn-success fas fa-copy fa-5x fa-fw"></i>
+                <% end %>
+              </h5>
+              <p class="card-text">
+                何かメモがある際は、こちらに記入 📝
+              </p>
+              <%= link_to "メモ帳" ,memos_path, class: "form-control btn btn-success" %>
+            </div>
+          </div>
         <% end %>
-      </h5>
-      <p class="card-text">
-        何かメモがある際は、こちらに記入 📝
-      </p>
-      <%= link_to "メモ帳" ,memos_path, class: "form-control btn btn-success" %>
-    </div>
-  </div>
 
-  <div class="card rounded border-danger ml-3 mb-3 mr-3" style="width: 33rem;">
-    <h5 class="card-header bg-danger text-white">生徒定期診断(教員/医師専用)</h5>
-    <div class="card-body">
-      <h5 class="card-title">
-        <%= link_to  checks_path, method: :get do %>
-          <i class="btn btn-danger fas fa-copy fa-5x fa-fw"></i>
+        <% if current_user_officer %>
+          <div class="card rounded border-danger ml-3 mb-5 mr-3" style="width: 40rem;">
+            <h5 class="card-header bg-danger text-white">生徒定期診断(教員/医師専用)</h5>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= link_to  checks_path, method: :get do %>
+                  <i class="btn btn-danger fas fa-copy fa-5x fa-fw"></i>
+                <% end %>
+              </h5>
+              <p class="card-text">
+                3ヶ月に1回行う生徒の定期診断の記入ができます👨‍⚕️
+              </p>
+              <%= link_to "定期診断" ,checks_path, class: "form-control btn btn-danger" %>
+            </div>
+          </div>
         <% end %>
-      </h5>
-      <p class="card-text">
-        3ヶ月に1回行う生徒の定期診断の記入ができます👨‍⚕️
-      </p>
-      <%= link_to "定期診断" ,checks_path, class: "form-control btn btn-danger" %>
-    </div>
-  </div>
 
-  <div class="card rounded border-warning ml-3 mb-3 mr-3" style="width: 33rem;">
-    <h5 class="card-header bg-warning text-white">プロフィール</h5>
-    <div class="card-body">
-      <h5 class="card-title">
-        <%= link_to  contacts_path, method: :get do %>
-          <i class="btn btn-warning text-white fas fa-home fa-5x"></i>
+        <% if current_user_student %>
+          <div class="card rounded border-warning ml-3 mb-5 mr-3" style="width: 40rem;">
+            <h5 class="card-header bg-warning text-white">プロフィール</h5>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= link_to  user_student_path(current_user_student.id), method: :get do %>
+                  <i class="btn btn-warning text-white fas fa-home fa-5x"></i>
+                <% end %>
+              </h5>
+              <p class="card-text">
+                プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の投稿&健康診断の結果やコメントの一覧が確認できます。
+              </p>
+              <%= link_to "プロフィール" ,user_student_path(current_user_student.id), class: "text-white form-control btn btn-warning" %>
+            </div>
+          </div>
         <% end %>
-      </h5>
-      <p class="card-text">
-        プロフィールページです🙍‍♂️🙎‍♀️<br>※過去の投稿&健康診断の結果やコメントの一覧が確認できます。
-      </p>
-      <% if current_user_student %>
-        <%= link_to "プロフィール" ,user_student_path(current_user_student.id), class: "text-white form-control btn btn-warning" %>
-      <% end %>
+      </div>
     </div>
+    <div class="col-md-2"></div>
   </div>
 </div>
